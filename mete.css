@@ -1,0 +1,99 @@
+/* Estilo da Barra de Busca */
+.search-container {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 5px 15px;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.search-container:focus-within {
+    border-color: var(--primary-yellow);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.search-container input {
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+    padding: 5px;
+    width: 200px;
+}
+
+.search-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}/* Barra de Categorias */
+.category-bar {
+    padding: 20px 5%;
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* Permite rolar horizontalmente em celulares */
+    white-space: nowrap;
+    scrollbar-width: none; /* Esconde a barra de rolagem no Firefox */
+}
+
+.category-bar::-webkit-scrollbar {
+    display: none; /* Esconde a barra de rolagem no Chrome/Safari */
+}
+
+.category-btn {
+    background-color: var(--card-gray);
+    color: var(--text-white);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.category-btn:hover, .category-btn.active {
+    background-color: var(--primary-yellow);
+    color: black;
+    border-color: var(--primary-yellow);
+}.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: 5% auto;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+}
+
+.close-btn {
+    color: var(--primary-yellow);
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: -30px; top: -30px;
+}
+
+#video-container iframe {
+    width: 100%;
+    height: 450px;
+    border: 2px solid var(--primary-yellow);
+}.nota {
+    background-color: var(--bg-black);
+    color: var(--primary-yellow);
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid var(--primary-yellow);
+}
+
+.movie-info h3 {
+    font-size: 1rem;
+    margin: 10px 0;
+}
