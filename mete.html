@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meteflix - Seu Cinema em Casa</title>
+    <style>
+        /* Variáveis de Cores */
+        :root {
+            --primary-yellow: #FFD700;
+            --bg-black: #0a0a0a;
+            --card-gray: #1a1a1a;
+            --text-white: #ffffff;
+        }
 
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-black);
+            color: var(--text-white);
+        }
+
+        /* Header / Navbar */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            position: fixed;
+            width: 90%;
+            z-index: 100;
+        }
+
+        .logo {
+            color: var(--primary-yellow);
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-yellow);
+        }
+
+        /* Destaque (Hero) */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(to right, rgba(0,0,0,0.9), transparent), 
+                        url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&q=80&w=2070') center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .btn-play {
+            background-color: var(--primary-yellow);
+            color: black;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        .btn-play:hover {
+            transform: scale(1.05);
+            background-color: #e6c200;
+        }
+
+        /* Lista de Filmes */
+        .movie-section {
+            padding: 40px 5%;
+        }
+
+        .movie-section h2 {
+            border-left: 4px solid var(--primary-yellow);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .movie-card {
+            background-color: var(--card-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-yellow);
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            padding: 10px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head><div id="player-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div id="video-container">
+            </div>
+    </div>
+</div>
+<body>
+
+    <header>
+        <div class="logo">METEFLIX</div>
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Séries</a>
+            <a href="#">Filmes</a>
+            <a href="#">Minha Lista</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>O Poder do Cinema</h1>
+                <p>Assista aos melhores lançamentos com a melhor qualidade de imagem e som do Brasil.</p>
+                <button class="btn-play">▶ ASSISTIR AGORA</button>
+            </div>
+        </section>
+
+        <section class="movie-section">
+            <h2>Populares na Meteflix</h2>
+            <div class="movie-grid" id="movie-grid">
+    </div>
+                <div class="movie-card">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&q=80" alt="Filme 1">
+                    <div class="movie-info">Interestelar</div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=500&q=80" alt="Filme 2">
+                    <div class="movie-info">O Espetáculo</div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://images.unsplash.com/photo-1542204172-3c1f81d05d8c?w=500&q=80" alt="Filme 3">
+                    <div class="movie-info">Noite Neon</div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=500&q=80" alt="Filme 4">
+                    <div class="movie-info">Cidade Perdida</div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=500&q=80" alt="Filme 5">
+                    <div class="movie-info">Super Nova</div>
+                </div>
+            </div>
+        </section>
+    </main><section class="category-bar">
+    <button class="category-btn active">🔥 Populares</button>
+    <button class="category-btn">🎬 Ação</button>
+    <button class="category-btn">🤣 Comédia</button>
+    <button class="category-btn">😨 Terror</button>
+    <button class="category-btn">🤖 Ficção</button>
+    <button class="category-btn">😭 Drama</button>
+    <button class="category-btn">👶 Infantil</button>
+</section>
+<script>
+    // 1. Nossa "Base de Dados" de filmes
+    const movies = [
+        { title: "Interestelar", cat: "Ficção", img: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500" },
+        { title: "John Wick", cat: "Ação", img: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=500" },
+        { title: "Super Bad", cat: "Comédia", img: "https://images.unsplash.com/photo-1542204172-3c1f81d05d8c?w=500" },
+        { title: "Invocação do Mal", cat: "Terror", img: "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=500" },
+        { title: "Mad Max", cat: "Ação", img: "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=500" },
+        { title: "Avatar", cat: "Ficção", img: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=500" }
+    ];
+
+    const movieGrid = document.getElementById('movie-grid');
+    const categoryBtns = document.querySelectorAll('.category-btn');
+
+    // 2. Função para mostrar os filmes na tela
+    function displayMovies(filter = "Todos") {
+        movieGrid.innerHTML = ""; // Limpa a grade
+
+        const filteredMovies = filter === "Todos" || filter === "🔥 Populares" 
+            ? movies 
+            : movies.filter(m => m.cat === filter);
+
+        filteredMovies.forEach(movie => {
+            const movieCard = `
+                <div class="movie-card">
+                    <img src="${movie.img}" alt="${movie.title}">
+                    <div class="movie-info">${movie.title}</div>
+                </div>
+            `;
+            movieGrid.innerHTML += movieCard;
+        });
+    }
+
+    // 3. Adicionar evento de clique nos botões
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove classe ativa de todos e adiciona no clicado
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Filtra os filmes (removendo o emoji do texto para comparar)
+            const category = btn.innerText.replace(/[^a-zA-ZáéíóúÁÉÍÓÚ]/g, '').trim();
+            displayMovies(btn.innerText.includes("Populares") ? "Todos" : category);
+        });
+    });
+
+    // Inicializa o site mostrando todos
+    displayMovies();
+</script>
+</body>
+</html><div class="search-container">
+    <input type="text" placeholder="Pesquisar filmes, séries..." id="search-input">
+    <button>🔍</button>
+</div>
